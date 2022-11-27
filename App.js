@@ -7,26 +7,39 @@ import {
   TouchableOpacity,
   
 } from 'react-native';
-import colors from './app/config/colors';
+import colors from './app/config/Colors';
+import WizardImg from './app/assets/images/Wizard.svg';
+import * as Svg from 'react-native-svg';
+import { SvgUri } from 'react-native-svg';
+
+
+
 
 export default function App() {
+
     return (
         <SafeAreaView  style={styles.page}>
           <View>
           <Text style={styles.header}>Krøniker</Text>
           </View>
-          <TouchableOpacity
-        style={styles.button
-          
-        }
-        onPress={() => navigation.navigate('Login')}>
+          <WizardImg     width="20%"
+    height="20%" />
+
+          {/* <SvgUri
+    width="20%"
+    height="20%"
+    uri="./app/assets/images/Wizard.svg"
+/> */}
+
+          <TouchableOpacity 
+          style={styles.button}
+        >
         <Text
           style={{
             color: 'white',
             fontSize: 18,
             textAlign: 'center',
             fontWeight: 'bold',
-            // fontFamily: 'Roboto-MediumItalic',
           }}>
           Let's Begin
         </Text>
@@ -44,6 +57,7 @@ export default function App() {
       },
 
       header: {
+        justifyContent: 'flex-start',
         fontSize: 30,
         fontWeight: 'bold',
         color: colors.textWhite
@@ -53,10 +67,10 @@ export default function App() {
       button: {
         backgroundColor: colors.primary,
         padding: 20,
-        width: '90%',
+        width: '80%',
         borderRadius: 10,
         marginBottom: 50,
         flexDirection: 'row',
-        justifyContent: 'space-between',
+        justifyContent: 'center',
       }
   });
