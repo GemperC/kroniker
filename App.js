@@ -8,40 +8,46 @@ import {
   
 } from 'react-native';
 import colors from './app/config/Colors';
-import WizardImg from './app/assets/images/Wizard.svg';
-import * as Svg from 'react-native-svg';
-import { SvgUri } from 'react-native-svg';
+import WizardImg from './app/assets/images/wizard.svg';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+const Stack = createNativeStackNavigator();
 
 
 
+function App() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen component={WelcomeScreen} name='WelcomeScreen' />
+        <Stack.Screen component={HomeScreen} name='HomeScreen' />
 
-export default function App() {
+      </Stack.Navigator>
+    </NavigationContainer>
+  )
+}
+
+function WelcomeScreen() {
 
     return (
         <SafeAreaView  style={styles.page}>
           <View>
           <Text style={styles.header}>Krøniker</Text>
           </View>
-          <WizardImg     width="20%"
-    height="20%" />
-
-          {/* <SvgUri
-    width="20%"
-    height="20%"
-    uri="./app/assets/images/Wizard.svg"
-/> */}
-
+          <WizardImg width="50%" height="50%" style={{marginBottom: 50}}/>
           <TouchableOpacity 
           style={styles.button}
+          onPress={() => navigation.navigate('HomeScreen')}
         >
         <Text
           style={{
             color: 'white',
-            fontSize: 18,
+            fontSize: 22,
             textAlign: 'center',
             fontWeight: 'bold',
           }}>
-          Let's Begin
+          Begin Your Story
         </Text>
       </TouchableOpacity>
         </SafeAreaView>
@@ -58,7 +64,8 @@ export default function App() {
 
       header: {
         justifyContent: 'flex-start',
-        fontSize: 30,
+        marginTop: 50,
+        fontSize: 40,
         fontWeight: 'bold',
         color: colors.textWhite
 
@@ -69,8 +76,20 @@ export default function App() {
         padding: 20,
         width: '80%',
         borderRadius: 10,
-        marginBottom: 50,
+        marginBottom: 35,
         flexDirection: 'row',
         justifyContent: 'center',
       }
   });
+
+
+
+  const HomeScreen = () => {
+    return (
+      <View>
+        
+      </View>
+    )
+  }
+
+  export default App;
