@@ -10,18 +10,20 @@ import colors from "../config/Colors";
 import WizardImg from "../assets/images/wizard.svg";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import WelcomeScreen from "./WelcomeScreen";
 
-export default function LoginScreen({navigation}) {
+export default function WelcomeScreen({navigation}) {
     return (
       <SafeAreaView style={styles.page}>
         <View>
-          <Text style={styles.title}>Login</Text>
+          <Text style={styles.title}>Krøniker</Text>
         </View>
         <WizardImg width="50%" height="50%" style={{ marginBottom: 50 }} />
         <TouchableOpacity
           style={styles.button}
-          onPress={() => navigation.navigate("WelcomeScreen")}
+        //   onPress={() => navigation.navigate("LoginScreen")}
+
+          onPress={() => navigation.replace("LoginScreen")}
+
         >
           <Text
             style={{
