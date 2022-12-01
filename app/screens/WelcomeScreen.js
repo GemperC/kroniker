@@ -22,7 +22,7 @@ export default function WelcomeScreen({navigation}) {
           style={styles.button}
         //   onPress={() => navigation.navigate("LoginScreen")}
 
-          onPress={() => navigation.replace("LoginScreen")}
+          onPress={() => navigation.replace("StartScreen")}
 
         >
           <Text
