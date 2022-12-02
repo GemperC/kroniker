@@ -9,13 +9,13 @@ export default function StartScreen({ navigation }) {
   return (
     <Background>
       <Logo />
-      <Header>Login Template</Header>
+      <Header>Krøniker</Header>
       <Paragraph>
-        The easiest way to start with your amazing application.
+      Start your story by signing up or loggin in if you already have an account
       </Paragraph>
       <Button
         mode="contained"
-        // onPress={() => navigation.navigate('LoginScreen')}
+        onPress={() => navigation.navigate('LoginScreen')}
       >
         Login
       </Button>

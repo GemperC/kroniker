@@ -1,66 +1,96 @@
-import React from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  SafeAreaView,
-  TouchableOpacity,
-} from "react-native";
-import colors from "../config/Colors";
-import WizardImg from "../assets/images/wizard.svg";
-import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import WelcomeScreen from "./WelcomeScreen";
+import React, { useState } from 'react'
+import { TouchableOpacity, StyleSheet, View } from 'react-native'
+import { Text } from 'react-native-paper'
+import Background from '../components/Background'
+import Logo from '../components/Logo'
+import Header from '../components/Header'
+import Button from '../components/Button'
+import TextInput from '../components/TextInput'
+import BackButton from '../components/BackButton'
+import { theme } from '../config/Theme'
+import { emailValidator } from '../helpers/emailValidator'
+import { passwordValidator } from '../helpers/passwordValidator'
 
-export default function LoginScreen({navigation}) {
-    return (
-      <SafeAreaView style={styles.page}>
-        <View>
-          <Text style={styles.title}>Login</Text>
-        </View>
-        <WizardImg width="50%" height="50%" style={{ marginBottom: 50 }} />
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => navigation.navigate("WelcomeScreen")}
-        >
-          <Text
-            style={{
-              color: "white",
-              fontSize: 22,
-              textAlign: "center",
-              fontWeight: "bold",
-            }}
-          >
-            Begin Your Story
-          </Text>
-        </TouchableOpacity>
-      </SafeAreaView>
-    );
+export default function LoginScreen({ navigation }) {
+  const [email, setEmail] = useState({ value: '', error: '' })
+  const [password, setPassword] = useState({ value: '', error: '' })
+
+  const onLoginPressed = () => {
+    const emailError = emailValidator(email.value)
+    const passwordError = passwordValidator(password.value)
+    if (emailError || passwordError) {
+      setEmail({ ...email, error: emailError })
+      setPassword({ ...password, error: passwordError })
+      return
+    }
+    navigation.reset({
+      index: 0,
+      routes: [{ name: 'Dashboard' }],
+    })
   }
 
-  const styles = StyleSheet.create({
-    page: {
-      flex: 1,
-      backgroundColor: colors.background,
-      alignItems: "center",
-      justifyContent: "center",
-    },
-  
-    title: {
-      justifyContent: "flex-start",
-      marginTop: 50,
-      fontSize: 40,
-      fontWeight: "bold",
-      color: colors.textWhite,
-    },
-  
-    button: {
-      backgroundColor: colors.primary,
-      padding: 20,
-      width: "80%",
-      borderRadius: 10,
-      marginBottom: 35,
-      flexDirection: "row",
-      justifyContent: "center",
-    },
-  });
+  return (
+    <Background>
+      <BackButton goBack={navigation.goBack} />
+      <Logo />
+      <Header>Welcome back.</Header>
+      <TextInput
+        label="Email"
+        returnKeyType="next"
+        value={email.value}
+        onChangeText={(text) => setEmail({ value: text, error: '' })}
+        error={!!email.error}
+        errorText={email.error}
+        autoCapitalize="none"
+        autoCompleteType="email"
+        textContentType="emailAddress"
+        keyboardType="email-address"
+      />
+      <TextInput
+        label="Password"
+        returnKeyType="done"
+        value={password.value}
+        onChangeText={(text) => setPassword({ value: text, error: '' })}
+        error={!!password.error}
+        errorText={password.error}
+        secureTextEntry
+      />
+      <View style={styles.forgotPassword}>
+        <TouchableOpacity
+          onPress={() => navigation.navigate('ResetPasswordScreen')}
+        >
+          <Text style={styles.forgot}>Forgot your password?</Text>
+        </TouchableOpacity>
+      </View>
+      <Button mode="contained" onPress={onLoginPressed}>
+        Login
+      </Button>
+      <View style={styles.row}>
+        <Text>Don’t have an account? </Text>
+        <TouchableOpacity onPress={() => navigation.replace('RegisterScreen')}>
+          <Text style={styles.link}>Sign up</Text>
+        </TouchableOpacity>
+      </View>
+    </Background>
+  )
+}
+
+const styles = StyleSheet.create({
+  forgotPassword: {
+    width: '100%',
+    alignItems: 'flex-end',
+    marginBottom: 24,
+  },
+  row: {
+    flexDirection: 'row',
+    marginTop: 4,
+  },
+  forgot: {
+    fontSize: 13,
+    color: theme.colors.secondary,
+  },
+  link: {
+    fontWeight: 'bold',
+    color: theme.colors.primary,
+  },
+})

@@ -20,8 +20,6 @@ export default function WelcomeScreen({navigation}) {
         <WizardImg width="50%" height="50%" style={{ marginBottom: 50 }} />
         <TouchableOpacity
           style={styles.button}
-        //   onPress={() => navigation.navigate("LoginScreen")}
-
           onPress={() => navigation.replace("StartScreen")}
 
         >
