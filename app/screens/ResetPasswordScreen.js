@@ -6,6 +6,7 @@ import Header from '../components/Header'
 import TextInput from '../components/TextInput'
 import Button from '../components/Button'
 import { emailValidator } from '../utils/emailValidator'
+import { ScrollView } from 'react-native-gesture-handler'
 
 export default function ResetPasswordScreen({ navigation }) {
   const [email, setEmail] = useState({ value: '', error: '' })
@@ -20,6 +21,7 @@ export default function ResetPasswordScreen({ navigation }) {
   }
 
   return (
+
     <Background>
       <BackButton goBack={navigation.goBack} />
       <Logo />
@@ -45,5 +47,6 @@ export default function ResetPasswordScreen({ navigation }) {
         Send Instructions
       </Button>
     </Background>
+
   )
 }
