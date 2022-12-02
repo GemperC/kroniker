@@ -14,6 +14,10 @@ import {
   WelcomeScreen,
   LoginScreen,
   StartScreen,
+  RegisterScreen,
+  ResetPasswordScreen,
+  Dashboard,
+
 } from "./app/screens/index";
 
 // import LoginScreen from "./app/screens/LoginScreen";
@@ -37,6 +41,10 @@ export default function App() {
         <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} />
         <Stack.Screen name="StartScreen" component={StartScreen} />
         <Stack.Screen name="LoginScreen" component={LoginScreen} />
+        <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
+        <Stack.Screen name="ResetPasswordScreen" component={ResetPasswordScreen} />
+        <Stack.Screen name="Dashboard" component={Dashboard} />
+
       </Stack.Navigator>
     </NavigationContainer>
   );
