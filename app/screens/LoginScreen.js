@@ -5,6 +5,7 @@ import {
   View,
   KeyboardAvoidingView,
   ScrollView,
+  
 } from "react-native";
 import { Text } from "react-native-paper";
 import Background from "../components/Background";
@@ -16,6 +17,7 @@ import BackButton from "../components/BackButton";
 import { theme } from "../config/Theme";
 import { emailValidator } from "../utils/emailValidator";
 import { passwordValidator } from "../utils/passwordValidator";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function LoginScreen({ navigation }) {
   const [email, setEmail] = useState({ value: "", error: "" });
@@ -36,6 +38,9 @@ export default function LoginScreen({ navigation }) {
   };
 
   return (
+    <SafeAreaView style={{ flex: 1, backgroundColor: theme.colors.background }}>
+
+    
         <Background>
           <BackButton goBack={navigation.goBack} />
           <Logo />
@@ -80,7 +85,7 @@ export default function LoginScreen({ navigation }) {
             </TouchableOpacity>
           </View>
         </Background>
-
+        </SafeAreaView>
   );
 }
 

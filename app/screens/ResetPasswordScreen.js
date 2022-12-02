@@ -7,6 +7,8 @@ import TextInput from '../components/TextInput'
 import Button from '../components/Button'
 import { emailValidator } from '../utils/emailValidator'
 import { ScrollView } from 'react-native-gesture-handler'
+import { SafeAreaView } from 'react-native-safe-area-context'
+import { theme } from '../config/Theme'
 
 export default function ResetPasswordScreen({ navigation }) {
   const [email, setEmail] = useState({ value: '', error: '' })
@@ -21,6 +23,7 @@ export default function ResetPasswordScreen({ navigation }) {
   }
 
   return (
+    <SafeAreaView style={{ flex: 1, backgroundColor: theme.colors.background }}>
 
     <Background>
       <BackButton goBack={navigation.goBack} />
@@ -47,6 +50,6 @@ export default function ResetPasswordScreen({ navigation }) {
         Send Instructions
       </Button>
     </Background>
-
+    </SafeAreaView>
   )
 }

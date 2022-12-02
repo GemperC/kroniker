@@ -3,7 +3,6 @@ import {
   StyleSheet,
   Text,
   View,
-  SafeAreaView,
   TouchableOpacity,
 } from "react-native";
 import colors from "./app/config/Colors";
@@ -19,6 +18,7 @@ import {
   Dashboard,
 
 } from "./app/screens/index";
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 // import LoginScreen from "./app/screens/LoginScreen";
 // import LoginScreen from "./app/auth/screens/StartScreen";
@@ -29,6 +29,8 @@ const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
+    <SafeAreaProvider>
+
     <NavigationContainer>
       <Stack.Navigator
         screenOptions={{
@@ -47,5 +49,6 @@ export default function App() {
 
       </Stack.Navigator>
     </NavigationContainer>
+    </SafeAreaProvider>
   );
 }
