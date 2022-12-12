@@ -19,6 +19,7 @@ import CustomSwitch from '../components/CustomSwitch.js';
 import ListItem from '../components/ListItem';
 import { sliderData } from '../model/data';
 import CustomImageCarousalSquare from '../components/CustomImageCarousalSquare';
+import { theme } from '../config/Theme';
 
 export default function HomeScreen({navigation}) {
   const [gamesTab, setGamesTab] = useState(1);
@@ -32,15 +33,15 @@ export default function HomeScreen({navigation}) {
   };
 
   return (
-    <SafeAreaView style={{flex: 1, backgroundColor: '#fff', paddingTop: 20}}>
-      <ScrollView style={{padding: 20}}>
+    <SafeAreaView style={{flex: 1, backgroundColor: theme.colors.background, paddingTop: 20}}>
+      <ScrollView style={{padding: 20, paddingTop: 20}}>
         <View
           style={{
             flexDirection: 'row',
             justifyContent: 'space-between',
             marginBottom: 20,
           }}>
-          <Text style={{fontSize: 18, fontFamily: 'Roboto-Medium'}}>
+          <Text style={{fontSize: 18, fontFamily: 'Roboto-Medium', color:theme.colors.white}}>
             Hello John Doe
           </Text>
           <TouchableOpacity onPress={() => navigation.openDrawer()}>
@@ -53,7 +54,7 @@ export default function HomeScreen({navigation}) {
             flexDirection: 'row',
             justifyContent: 'space-between',
           }}>
-          <Text style={{fontSize: 18, fontFamily: 'Roboto-Medium'}}>
+          <Text style={{fontSize: 18, fontFamily: 'Roboto-Medium', color:theme.colors.white}}>
             Upcoming Games
           </Text>
           <TouchableOpacity onPress={() => {}}>
@@ -79,7 +80,7 @@ export default function HomeScreen({navigation}) {
             flexDirection: 'row',
             justifyContent: 'space-between',
           }}>
-          <Text style={{fontSize: 18, fontFamily: 'Roboto-Medium'}}>
+          <Text style={{fontSize: 18, fontFamily: 'Roboto-Medium', color:theme.colors.white}}>
             News
           </Text>
           <TouchableOpacity onPress={() => {}}>
