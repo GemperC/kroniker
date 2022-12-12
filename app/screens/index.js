@@ -3,7 +3,7 @@ import LoginScreen from "./LoginScreen";
 import StartScreen from "./StartScreen";
 import RegisterScreen from "./RegisterScreen";
 import ResetPasswordScreen from "./ResetPasswordScreen";
-import Dashboard from "./Dashboard";
+import HomePage from "./HomePage";
 
 export {
     WelcomeScreen,
@@ -11,6 +11,6 @@ export {
     StartScreen,
     RegisterScreen,
     ResetPasswordScreen,
-    Dashboard,
+    HomePage,
 
 }

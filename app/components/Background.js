@@ -9,11 +9,6 @@ import { theme } from "../config/Theme";
 
 export default function Background({ children }) {
   return (
-    // <ImageBackground
-    //   source={require("../assets/background_dot.png")}
-    //   resizeMode="repeat"
-    //   style={styles.background}
-    // >
 <View style={styles.background}>
 
       <KeyboardAvoidingView style={styles.container} behavior="padding">
