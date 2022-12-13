@@ -26,7 +26,7 @@ import { theme } from '../config/Theme';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 
-export default function HomeScreen({navigation}) {
+export default function Charecter({navigation}) {
   const [gamesTab, setGamesTab] = useState(1);
 
   const renderBanner = ({item, index}) => {
@@ -47,7 +47,7 @@ export default function HomeScreen({navigation}) {
             marginBottom: 20,
           }}>
           <Text style={{fontSize: 18, color:theme.colors.white}}>
-            Hello Tom Cohen
+            THis is your charecter
           </Text>
           <TouchableOpacity onPress={() => navigation.openDrawer()}>
           </TouchableOpacity>
