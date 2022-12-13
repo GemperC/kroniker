@@ -9,6 +9,8 @@ import {
   TouchableOpacity,
   Linking,
 } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
+
 import Carousel from 'react-native-reanimated-carousel';
 import Feather from 'react-native-vector-icons/Feather';
 
@@ -26,7 +28,8 @@ import { theme } from '../config/Theme';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 
-export default function HomeScreen({navigation}) {
+export default function HomeScreen({ navigation }) {
+
   const [gamesTab, setGamesTab] = useState(1);
 
   const renderBanner = ({item, index}) => {
@@ -37,21 +40,23 @@ export default function HomeScreen({navigation}) {
     setGamesTab(value);
   };
 
+
+  React.useLayoutEffect(() => {
+    navigation.setOptions({
+      headerTitle: (props) => (
+        <Text {...props} style={{fontSize: 22, color: theme.colors.white, fontWeight: 'bold' }}>
+          Hello Tom Cohen
+        </Text> 
+      ),
+
+    });
+  }, [navigation]);
+
   return (
-    <SafeAreaView style={{flex: 1, backgroundColor: theme.colors.background, paddingTop: 30}}>
+    <>
+    <SafeAreaView style={{flex: 1, backgroundColor: theme.colors.background}}>
       <ScrollView style={{padding: 20}}>
-        <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            marginBottom: 20,
-          }}>
-          <Text style={{fontSize: 18, color:theme.colors.white}}>
-            Hello Tom Cohen
-          </Text>
-          <TouchableOpacity onPress={() => navigation.openDrawer()}>
-          </TouchableOpacity>
-        </View>
+        
 
         <View
           style={{
@@ -59,7 +64,7 @@ export default function HomeScreen({navigation}) {
             flexDirection: 'row',
             justifyContent: 'space-between',
           }}>
-          <Text style={{fontSize: 18, color:theme.colors.white}}>
+          <Text style={{fontSize: 20, color:theme.colors.white}}>
             Upcoming Games
           </Text>
           <TouchableOpacity onPress={() => {}}>
@@ -139,6 +144,8 @@ export default function HomeScreen({navigation}) {
           ))}
       </ScrollView>
     </SafeAreaView>
+    <StatusBar style="light" />
+    </>
   );
 }
 
