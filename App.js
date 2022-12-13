@@ -66,8 +66,11 @@ const Home = () => {
       screenOptions={{
         headerTintColor: "white",
         drawerStyle: {
-          width: 240
+          width: 240,
+          backgroundColor: "black",
         },
+        drawerInactiveTintColor: "white",
+
         headerStyle: {
           backgroundColor: "black", 
         },
@@ -77,7 +80,7 @@ const Home = () => {
         name="HomePage"
         options={{
           drawerLabel: "Home Page",
-          activeTintColor: "#e91e63",
+          
         }}
         component={HomePage}
       />
@@ -85,7 +88,6 @@ const Home = () => {
         name="Charecter"
         options={{
           drawerLabel: "Charecter",
-          activeTintColor: "#e91e63",
         }}
         component={Charecter}
       />

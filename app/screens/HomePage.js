@@ -55,9 +55,8 @@ export default function HomeScreen({ navigation }) {
   return (
     <>
     <SafeAreaView style={{flex: 1, backgroundColor: theme.colors.background}}>
-      <ScrollView style={{padding: 20}}>
+      <ScrollView style={{padding: 20, paddingTop: 5}}>
         
-
         <View
           style={{
             marginVertical: 15,
