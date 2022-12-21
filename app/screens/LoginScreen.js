@@ -18,6 +18,9 @@ import { theme } from "../config/Theme";
 import { emailValidator } from "../utils/emailValidator";
 import { passwordValidator } from "../utils/passwordValidator";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { auth } from "../../firebaseConfig";
+
+
 
 export default function LoginScreen({ navigation }) {
   const [email, setEmail] = useState({ value: "", error: "" });
@@ -36,6 +39,10 @@ export default function LoginScreen({ navigation }) {
       routes: [{ name: "Home" }],
     });
   };
+
+  const signInUser = ()=>{
+    
+  }
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: theme.colors.background }}>

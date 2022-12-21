@@ -12,6 +12,9 @@ import { emailValidator } from "../utils/emailValidator";
 import { passwordValidator } from "../utils/passwordValidator";
 import { nameValidator } from "../utils/nameValidator";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { auth } from "../../firebaseConfig";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+
 
 export default function RegisterScreen({ navigation }) {
   const [name, setName] = useState({ value: "", error: "" });
@@ -28,11 +31,18 @@ export default function RegisterScreen({ navigation }) {
       setPassword({ ...password, error: passwordError });
       return;
     }
+    
     navigation.reset({
       index: 0,
       routes: [{ name: "Dashboard" }],
     });
   };
+
+  const registerUser = ()=>{
+    createUserWithEmailAndPassword(auth,email,password)
+    .then((e)=>{console.log(e);})
+    .catch((e)=>{console.log(e);})
+  }
 
   return (
     <>
@@ -50,14 +60,14 @@ export default function RegisterScreen({ navigation }) {
           <BackButton goBack={navigation.goBack} />
           <Logo />
           <Header>Create Account</Header>
-          <TextInput
+          {/* <TextInput
             label="Name"
             returnKeyType="next"
             value={name.value}
             onChangeText={(text) => setName({ value: text, error: "" })}
             error={!!name.error}
             errorText={name.error}
-          />
+          /> */}
           <TextInput
             label="Email"
             returnKeyType="next"

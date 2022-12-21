@@ -8,10 +8,8 @@ import {
 } from "react-native";
 import colors from "../config/Colors";
 import WizardImg from "../assets/images/wizard.svg";
-import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-export default function WelcomeScreen({navigation}) {
+export default function WelcomeScreen({ navigation }) {
     return (
       <SafeAreaView style={styles.page}>
         <View>

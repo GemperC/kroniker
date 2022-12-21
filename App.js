@@ -43,12 +43,12 @@ const NavigationDrawerStructure = (props) => {
 const Auth = () => {
   return (
     <Stack.Navigator
-      initialRouteName="WelcomeScreen"
+      initialRouteName="StartScreen"
       screenOptions={{
         headerShown: false,
       }}
     >
-      <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} />
+      {/* <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} /> */}
       <Stack.Screen name="StartScreen" component={StartScreen} />
       <Stack.Screen name="LoginScreen" component={LoginScreen} />
       <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
@@ -79,7 +79,7 @@ const Home = () => {
       <Drawer.Screen
         name="HomePage"
         options={{
-          drawerLabel: "Home Page",
+          drawerLabel: "Home",
           
         }}
         component={HomePage}
@@ -100,7 +100,7 @@ export default function App() {
     <SafeAreaProvider>
       <NavigationContainer>
         <Stack.Navigator
-          initialRouteName="Home"
+          initialRouteName="Auth"
           screenOptions={{
             headerShown: false,
             presentation: "card",
