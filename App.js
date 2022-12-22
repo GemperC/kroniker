@@ -3,6 +3,7 @@ import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createDrawerNavigator } from "@react-navigation/drawer";
+import { StatusBar } from "expo-status-bar";
 
 import {
   WelcomeScreen,
@@ -42,9 +43,13 @@ const NavigationDrawerStructure = (props) => {
 
 const Auth = () => {
   return (
+    <>
+
+
     <Stack.Navigator
       initialRouteName="StartScreen"
       screenOptions={{
+        
         headerShown: false,
       }}
     >
@@ -57,6 +62,9 @@ const Auth = () => {
         component={ResetPasswordScreen}
       />
     </Stack.Navigator>
+        <StatusBar style="light" />
+
+    </>
   );
 };
 
