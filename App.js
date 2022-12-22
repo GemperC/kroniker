@@ -2,10 +2,22 @@ import "react-native-gesture-handler";
 import React, { useState } from 'react';
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { createDrawerNavigator } from "@react-navigation/drawer";
+import { createDrawerNavigator, 
+      DrawerItem,
+      DrawerContentScrollView,
+      DrawerItemList
+} from "@react-navigation/drawer";
 import { StatusBar } from "expo-status-bar";
 import { auth } from "./firebaseConfig";
-import { onAuthStateChanged } from "firebase/auth";
+import { onAuthStateChanged, signOut } from "firebase/auth";
+import {
+  TouchableOpacity,
+  StyleSheet,
+  View,
+  KeyboardAvoidingView,
+  ScrollView,
+  
+} from "react-native";
 
 import {
   WelcomeScreen,
@@ -14,7 +26,7 @@ import {
   RegisterScreen,
   ResetPasswordScreen,
   HomePage,
-  Charecter,
+  Character,
 } from "./app/screens/index";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
@@ -71,9 +83,35 @@ const Auth = () => {
   );
 };
 
+function AppDrawerContent(props){
+  return (
+     <DrawerContentScrollView {...props} contentContainerStyle={{flex:1}}>
+       {/*all of the drawer items*/}
+       <DrawerItemList {...props}  style={{borderWidth:1}}/>
+       <View style={{flex:1,marginVertical:20,borderWidth:1}}>
+         {/* here's where you put your logout drawer item*/}
+         <DrawerItem 
+           label="Log out"
+           activeTintColor="white"
+           inactiveTintColor="white"
+
+           onPress={()=>{
+             signOut(auth);
+             props.navigation.replace("Auth");
+           }}
+           style={{flex:1,justifyContent:'flex-end'}}
+         />
+       </View>
+     </DrawerContentScrollView>
+   );
+ }
+
 const Home = () => {
   return (
-    <Drawer.Navigator
+    <Drawer.Navigator 
+    drawerContent={
+      props=><AppDrawerContent {...props} />
+    }
       screenOptions={{
         headerTintColor: "white",
         drawerStyle: {
@@ -96,11 +134,12 @@ const Home = () => {
         component={HomePage}
       />
       <Drawer.Screen
-        name="Charecter"
+        name="Character"
         options={{
-          drawerLabel: "Charecter",
+          drawerLabel: "Character",
+          
         }}
-        component={Charecter}
+        component={Character}
       />
     </Drawer.Navigator>
   );
