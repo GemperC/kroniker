@@ -46,8 +46,8 @@ export default function ListItem({photo, title, subTitle, isFree, price, onPress
           textAlign: 'center',
           fontSize: 14,
         }}>
-          {isFree == 'Yes' && 'Play'}
-          {isFree == 'No' && price}
+          {isFree == 'Yes' && 'Enter'}
+          {isFree == 'No' && "Pick"}
         </Text>
       </TouchableOpacity>
     </View>

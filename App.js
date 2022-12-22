@@ -27,6 +27,7 @@ import {
   ResetPasswordScreen,
   HomePage,
   Character,
+  Games,
 } from "./app/screens/index";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
@@ -115,7 +116,7 @@ const Home = () => {
       screenOptions={{
         headerTintColor: "white",
         drawerStyle: {
-          width: 240,
+          width: 200,
           backgroundColor: "black",
         },
         drawerInactiveTintColor: "white",
@@ -134,9 +135,17 @@ const Home = () => {
         component={HomePage}
       />
       <Drawer.Screen
+        name="Games"
+        options={{
+          drawerLabel: "Games",
+          
+        }}
+        component={Games}
+      />
+      <Drawer.Screen
         name="Character"
         options={{
-          drawerLabel: "Character",
+          drawerLabel: "Characters",
           
         }}
         component={Character}
@@ -157,14 +166,11 @@ export default function App() {
     if (user) {
       setIntialRoute('Home');
       // User is signed in.
-      console.log('User is signed in');
     } else {
       setIntialRoute('Auth');
       // No user is signed in.
-      console.log('No user is signed in');
     }
   });
-  console.log(initialRoute);
   return (
     <SafeAreaProvider>
       <NavigationContainer>

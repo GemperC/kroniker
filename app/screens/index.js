@@ -5,6 +5,7 @@ import RegisterScreen from "./RegisterScreen";
 import ResetPasswordScreen from "./ResetPasswordScreen";
 import HomePage from "./HomePage";
 import Character from "./Character";
+import Games from "./Games";
 
 export {
     WelcomeScreen,
@@ -14,5 +15,6 @@ export {
     ResetPasswordScreen,
     HomePage,
     Character,
+    Games,
 
 }

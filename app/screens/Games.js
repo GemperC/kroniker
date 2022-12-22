@@ -8,8 +8,6 @@ import {
   TextInput,
   TouchableOpacity,
   Linking,
-  Button,
-  Pressable
 } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 
@@ -30,7 +28,7 @@ import { theme } from '../config/Theme';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 
-export default function HomeScreen({ navigation }) {
+export default function Games({ navigation }) {
 
   const [gamesTab, setGamesTab] = useState(1);
 
@@ -47,17 +45,8 @@ export default function HomeScreen({ navigation }) {
     navigation.setOptions({
       headerTitle: (props) => (
         <Text {...props} style={{fontSize: 22, color: theme.colors.white, fontWeight: 'bold' }}>
-          Hello Tom Cohen
+          Games
         </Text> 
-      ),
-      headerRight: () => (
-<Pressable style={{paddingRight: 22}}
-onPress={{
-  
-}}>
-  <Text style={{color:"#20b8ff",fontSize:28,    textAlign: 'center',
-}}>+</Text>
-</Pressable>
       ),
 
     });
