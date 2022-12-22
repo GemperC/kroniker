@@ -1,9 +1,11 @@
 import "react-native-gesture-handler";
-import React from "react";
+import React, { useState } from 'react';
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { StatusBar } from "expo-status-bar";
+import { auth } from "./firebaseConfig";
+import { onAuthStateChanged } from "firebase/auth";
 
 import {
   WelcomeScreen,
@@ -18,6 +20,7 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
+
 
 const NavigationDrawerStructure = (props) => {
   //Structure for the navigatin Drawer
@@ -103,12 +106,31 @@ const Home = () => {
   );
 };
 
+
+
+
+
 export default function App() {
+  const [initialRoute, setIntialRoute] = useState('');
+
+
+  auth.onAuthStateChanged(function(user){
+    if (user) {
+      setIntialRoute('Home');
+      // User is signed in.
+      console.log('User is signed in');
+    } else {
+      setIntialRoute('Auth');
+      // No user is signed in.
+      console.log('No user is signed in');
+    }
+  });
+  console.log(initialRoute);
   return (
     <SafeAreaProvider>
       <NavigationContainer>
         <Stack.Navigator
-          initialRouteName="Auth"
+          initialRouteName={initialRoute}
           screenOptions={{
             headerShown: false,
             presentation: "card",

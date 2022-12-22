@@ -19,6 +19,7 @@ import { emailValidator } from "../utils/emailValidator";
 import { passwordValidator } from "../utils/passwordValidator";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { auth } from "../../firebaseConfig";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 
 
@@ -34,14 +35,24 @@ export default function LoginScreen({ navigation }) {
       setPassword({ ...password, error: passwordError });
       return;
     }
-    navigation.reset({
-      index: 0,
-      routes: [{ name: "Home" }],
-    });
+    signInUser();
+    // navigation.reset({
+    //   index: 0,
+    //   routes: [{ name: "Home" }],
+    // });
+    
   };
 
   const signInUser = ()=>{
-    
+    signInWithEmailAndPassword(auth, email.value, password.value)
+    .then((e)=>{
+      console.log(e);
+      navigation.reset({
+        index: 0,
+        routes: [{ name: "Home" }],
+      });
+    })
+    .catch((e)=>{console.log(e);})
   }
 
   return (

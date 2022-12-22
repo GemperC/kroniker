@@ -25,8 +25,12 @@ import { theme } from '../config/Theme';
 
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
+import { auth } from '../../firebaseConfig';
+import { signOut } from 'firebase/auth';
 
 export default function Charecter({navigation}) {
+
+  signOut(auth);
   const [gamesTab, setGamesTab] = useState(1);
 
   const renderBanner = ({item, index}) => {
