@@ -42,10 +42,10 @@ export default function RegisterScreen({ navigation }) {
       return;
     };
     registerUser();
-    // navigation.reset({
-    //   index: 0,
-    //   routes: [{ name: "Dashboard" }],
-    // });
+    navigation.reset({
+      index: 0,
+      routes: [{ name: "Home" }],
+    });
   };
 
 
