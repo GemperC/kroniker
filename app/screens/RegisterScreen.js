@@ -15,34 +15,40 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { auth } from "../../firebaseConfig";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 
-
 export default function RegisterScreen({ navigation }) {
   const [name, setName] = useState({ value: "", error: "" });
   const [email, setEmail] = useState({ value: "", error: "" });
   const [password, setPassword] = useState({ value: "", error: "" });
 
+
+  const registerUser = ()=>{
+    console.log("making user");
+    createUserWithEmailAndPassword(auth,email.value,password.value)
+    .then((e)=>{console.log(e);})
+    .catch((e)=>{console.log(e);})
+  };
+
   const onSignUpPressed = () => {
     const nameError = nameValidator(name.value);
     const emailError = emailValidator(email.value);
     const passwordError = passwordValidator(password.value);
+    console.log(email.value);
+    console.log(password.value);
     if (emailError || passwordError || nameError) {
       setName({ ...name, error: nameError });
       setEmail({ ...email, error: emailError });
       setPassword({ ...password, error: passwordError });
+      console.log("here");
       return;
-    }
-    
-    navigation.reset({
-      index: 0,
-      routes: [{ name: "Dashboard" }],
-    });
+    };
+    registerUser();
+    // navigation.reset({
+    //   index: 0,
+    //   routes: [{ name: "Dashboard" }],
+    // });
   };
 
-  const registerUser = ()=>{
-    createUserWithEmailAndPassword(auth,email,password)
-    .then((e)=>{console.log(e);})
-    .catch((e)=>{console.log(e);})
-  }
+
 
   return (
     <>
@@ -60,14 +66,14 @@ export default function RegisterScreen({ navigation }) {
           <BackButton goBack={navigation.goBack} />
           <Logo />
           <Header>Create Account</Header>
-          {/* <TextInput
+          <TextInput
             label="Name"
             returnKeyType="next"
             value={name.value}
             onChangeText={(text) => setName({ value: text, error: "" })}
             error={!!name.error}
             errorText={name.error}
-          /> */}
+          />
           <TextInput
             label="Email"
             returnKeyType="next"
