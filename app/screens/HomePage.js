@@ -32,6 +32,13 @@ import { NavigationContainer } from '@react-navigation/native';
 
 export default function HomeScreen({ navigation }) {
 
+  const [visible, setVisible] = useState(false);
+
+  const showDialog = () => {
+    setVisible(true);
+  };
+
+
   const [gamesTab, setGamesTab] = useState(1);
 
   const renderBanner = ({item, index}) => {
@@ -43,6 +50,7 @@ export default function HomeScreen({ navigation }) {
   };
 
 
+
   React.useLayoutEffect(() => {
     navigation.setOptions({
       headerTitle: (props) => (
@@ -52,13 +60,13 @@ export default function HomeScreen({ navigation }) {
       ),
       headerRight: () => (
 <Pressable style={{paddingRight: 22}}
-onPress={{
-  
-}}>
+onPress={ showDialog}>
   <Text style={{color:"#20b8ff",fontSize:28,    textAlign: 'center',
 }}>+</Text>
 </Pressable>
+
       ),
+      
 
     });
   }, [navigation]);
